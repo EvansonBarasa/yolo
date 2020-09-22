@@ -3,14 +3,14 @@ services:
     client:
         image: Sniffer/yolo-client:1.0
         build:
-            context: 
+            context: .
             dockerfile: FrontEnd.dockerfile
         ports: 
             - 3000:3000
     backend: 
         image: Sniffer/yolo-backend:1.0
         build: 
-            context: 
+            context: .
             dockerfile: BackeEnd.dockerfile
         ports: 
             - 5000:5000
