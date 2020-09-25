@@ -1,22 +1,26 @@
 version: "3.7"
 services:
-    client:
-        image: Sniffer/yolo-client:1.0
-        build:
-            context: .
-            dockerfile: client.Dockerfile
-        ports: 
-            - 3000:3000
-    backend: 
-        image: Sniffer/yolo-backend:1.0
-        build: 
-            context: .
-            dockerfile: backend.Dockerfile
-        ports: 
-            - 5000:5000
-        depends_on: 
-            - mongo
-    mongo:
-        image: mongo
-        ports: 
-            - 27017:27017
+  client:
+    image: sniffer/yolo-client:1.0
+    build:
+      context: .
+      args:
+        - BUILD_DATE
+      dockerfile: client.Dockerfile
+    links:
+      - backend
+    ports:
+      - 3000:3000
+  backend:
+    image: sniffer/yolo-backend:1.0
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - 27018:27018

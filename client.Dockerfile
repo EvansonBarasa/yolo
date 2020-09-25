@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-LABEL maintain = "Sniffer <evanzo85@gmail.com>"
+LABEL maintain = "sniffer <evanzo85@gmail.com>"
 
 RUN apk update && apk add nodejs nodejs-npm
 COPY client /client
